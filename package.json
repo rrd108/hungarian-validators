@@ -1,0 +1,36 @@
+{
+  "name": "hungarian-validators",
+  "version": "1.0.0",
+  "description": "A TypeScript/JavaScript library for validating Hungarian identifiers: tax numbers (adóazonosító jel)",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "README.md",
+    "README.hu.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "test": "vitest run",
+    "test:watch": "vitest --watch",
+    "prepublishOnly": "pnpm run build"
+  },
+  "keywords": [
+    "hungary",
+    "hungarian",
+    "validator",
+    "validation",
+    "tax-number",
+    "adóazonosító",
+    "magyar",
+    "typescript"
+  ],
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "typescript": "^5.0.0",
+    "vitest": "^3.2.4"
+  }
+}
