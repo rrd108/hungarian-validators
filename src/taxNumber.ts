@@ -1,3 +1,5 @@
+import { ValidationResult, ValidationOptions, cleanNumericInput } from './types'
+
 /**
  * Validates Hungarian tax number (adóazonosító jel)
  *
@@ -12,15 +14,7 @@
  * @param options - Optional configuration
  * @returns Object with isValid boolean and optional error message
  */
-export interface TaxNumberValidationOptions {
-  /** Language for error messages ('hu' | 'en'). Default: 'hu' */
-  language?: 'hu' | 'en'
-}
-
-export interface ValidationResult {
-  isValid: boolean
-  error?: string
-}
+export interface TaxNumberValidationOptions extends ValidationOptions { }
 
 const errorMessages = {
   hu: {
@@ -49,7 +43,7 @@ export function validateTaxNumber(
   const messages = errorMessages[lang]
 
   // Remove any whitespace and non-numeric characters
-  const cleaned = taxNumber.replace(/\D/g, '')
+  const cleaned = cleanNumericInput(taxNumber)
 
   // Check if it's exactly 10 digits
   if (!/^\d{10}$/.test(cleaned)) {
@@ -177,7 +171,7 @@ export function validateTaxNumberBirthDate(
   }
 
   // Remove any whitespace and non-numeric characters (same as validateTaxNumber)
-  const cleaned = taxNumber.replace(/\D/g, '')
+  const cleaned = cleanNumericInput(taxNumber)
   const daysFromTaxNumber = parseInt(cleaned.substring(1, 6), 10)
   const daysFromBirthDate = calculateDaysSince1867(birthDate)
 
