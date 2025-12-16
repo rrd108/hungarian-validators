@@ -1,5 +1,7 @@
 # hungarian-validators
 
+[🇬🇧 English / Angol](README.md)
+
 TypeScript/JavaScript könyvtár magyar azonosítók validálásához: adóazonosító jel, TAJ szám, bankszámlaszám és további azonosítók ellenőrzéséhez.
 
 ## Telepítés

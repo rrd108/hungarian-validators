@@ -1,5 +1,7 @@
 # hungarian-validators
 
+[🇭🇺 Magyarul / Hungarian](README.hu.md)
+
 A TypeScript/JavaScript library for validating Hungarian identifiers: tax numbers (adóazonosító jel), TAJ numbers, bank accounts, and more.
 
 ## Installation
@@ -126,7 +128,8 @@ pnpm run publish:minor
 pnpm run publish:major
 ```
 
-**Note:** 
+**Note:**
+
 - Make sure your git working directory is clean (commit or stash changes) before running these scripts, as they create git commits and tags automatically.
 - The scripts automatically push commits and tags to GitHub, and create GitHub releases using the GitHub CLI (`gh`).
 - Ensure you're authenticated with GitHub CLI (`gh auth login`) before running these scripts.
