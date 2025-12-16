@@ -102,16 +102,16 @@ A karbantartók számára az alábbi szkriptek használhatók új verziók közz
 
 ### Verzió növelő szkriptek
 
-- `pnpm run version:patch` - Patch verzió növelése (1.0.0 → 1.0.1)
-- `pnpm run version:minor` - Minor verzió növelése (1.0.0 → 1.1.0)
-- `pnpm run version:major` - Major verzió növelése (1.0.0 → 2.0.0)
+- `pnpm run version:patch` - Patch verzió növelése (1.0.0 → 1.0.1), git commit/címke létrehozása, GitHub-ra pusholása és GitHub release létrehozása
+- `pnpm run version:minor` - Minor verzió növelése (1.0.0 → 1.1.0), git commit/címke létrehozása, GitHub-ra pusholása és GitHub release létrehozása
+- `pnpm run version:major` - Major verzió növelése (1.0.0 → 2.0.0), git commit/címke létrehozása, GitHub-ra pusholása és GitHub release létrehozása
 - `pnpm run version:patch:preview` - Előnézet, hogy mi lenne a következő patch verzió
 
 ### Közzétételi szkriptek (Verzió növelés + Közzététel)
 
-- `pnpm run publish:patch` - Patch verzió növelése és npm-re közzététel
-- `pnpm run publish:minor` - Minor verzió növelése és npm-re közzététel
-- `pnpm run publish:major` - Major verzió növelése és npm-re közzététel
+- `pnpm run publish:patch` - Patch verzió növelése, GitHub release létrehozása és npm-re közzététel
+- `pnpm run publish:minor` - Minor verzió növelése, GitHub release létrehozása és npm-re közzététel
+- `pnpm run publish:major` - Major verzió növelése, GitHub release létrehozása és npm-re közzététel
 
 **Használati példák:**
 
@@ -126,7 +126,12 @@ pnpm run publish:minor
 pnpm run publish:major
 ```
 
-**Megjegyzés:** Mielőtt futtatnád ezeket a szkripteket, győződj meg arról, hogy a git munkakönyvtár tiszta (commitold vagy stash-elj el változtatásokat), mivel ezek automatikusan git commit-okat és címkéket hoznak létre.
+**Megjegyzés:**
+
+- Mielőtt futtatnád ezeket a szkripteket, győződj meg arról, hogy a git munkakönyvtár tiszta (commitold vagy stash-elj el változtatásokat), mivel ezek automatikusan git commit-okat és címkéket hoznak létre.
+- A szkriptek automatikusan pusholják a commit-okat és címkéket a GitHub-ra, és létrehoznak egy GitHub release-t a GitHub CLI (`gh`) használatával.
+- Bizonyosodj meg arról, hogy be vagy jelentkezve a GitHub CLI-ba (`gh auth login`) a szkriptek futtatása előtt.
+- A release jegyzeteket automatikusan generálja a release-ek közötti commit-okból.
 
 ## Közreműködés
 

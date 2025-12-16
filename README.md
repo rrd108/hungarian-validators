@@ -102,16 +102,16 @@ For maintainers, use the following scripts to publish new versions:
 
 ### Version Bump Scripts
 
-- `pnpm run version:patch` - Bumps patch version (1.0.0 → 1.0.1)
-- `pnpm run version:minor` - Bumps minor version (1.0.0 → 1.1.0)
-- `pnpm run version:major` - Bumps major version (1.0.0 → 2.0.0)
+- `pnpm run version:patch` - Bumps patch version (1.0.0 → 1.0.1), creates git commit/tag, pushes to GitHub, and creates a GitHub release
+- `pnpm run version:minor` - Bumps minor version (1.0.0 → 1.1.0), creates git commit/tag, pushes to GitHub, and creates a GitHub release
+- `pnpm run version:major` - Bumps major version (1.0.0 → 2.0.0), creates git commit/tag, pushes to GitHub, and creates a GitHub release
 - `pnpm run version:patch:preview` - Preview what the next patch version would be
 
 ### Publish Scripts (Version Bump + Publish)
 
-- `pnpm run publish:patch` - Bumps patch version and publishes to npm
-- `pnpm run publish:minor` - Bumps minor version and publishes to npm
-- `pnpm run publish:major` - Bumps major version and publishes to npm
+- `pnpm run publish:patch` - Bumps patch version, creates GitHub release, and publishes to npm
+- `pnpm run publish:minor` - Bumps minor version, creates GitHub release, and publishes to npm
+- `pnpm run publish:major` - Bumps major version, creates GitHub release, and publishes to npm
 
 **Usage examples:**
 
@@ -126,7 +126,11 @@ pnpm run publish:minor
 pnpm run publish:major
 ```
 
-**Note:** Make sure your git working directory is clean (commit or stash changes) before running these scripts, as they create git commits and tags automatically.
+**Note:** 
+- Make sure your git working directory is clean (commit or stash changes) before running these scripts, as they create git commits and tags automatically.
+- The scripts automatically push commits and tags to GitHub, and create GitHub releases using the GitHub CLI (`gh`).
+- Ensure you're authenticated with GitHub CLI (`gh auth login`) before running these scripts.
+- Release notes are automatically generated from the commits between releases.
 
 ## Contributing
 
