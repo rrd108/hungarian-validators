@@ -3,6 +3,11 @@
   "version": "1.0.0",
   "description": "A TypeScript/JavaScript library for validating Hungarian identifiers: tax numbers (adóazonosító jel)",
   "type": "module",
+  "author": "Radharadhya Dasa",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rrd108/hungarian-validators"
+  },
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
@@ -15,7 +20,14 @@
     "build": "tsc",
     "test": "vitest run",
     "test:watch": "vitest --watch",
-    "prepublishOnly": "pnpm run build"
+    "prepublishOnly": "pnpm run build",
+    "version:patch": "pnpm version patch",
+    "version:minor": "pnpm version minor",
+    "version:major": "pnpm version major",
+    "version:patch:preview": "pnpm version patch --dry-run",
+    "publish:patch": "pnpm run version:patch && pnpm publish",
+    "publish:minor": "pnpm run version:minor && pnpm publish",
+    "publish:major": "pnpm run version:major && pnpm publish"
   },
   "keywords": [
     "hungary",

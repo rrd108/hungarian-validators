@@ -96,6 +96,38 @@ This package is designed to be extended with additional Hungarian validators:
 
 MIT
 
+## Publishing New Versions
+
+For maintainers, use the following scripts to publish new versions:
+
+### Version Bump Scripts
+
+- `pnpm run version:patch` - Bumps patch version (1.0.0 → 1.0.1)
+- `pnpm run version:minor` - Bumps minor version (1.0.0 → 1.1.0)
+- `pnpm run version:major` - Bumps major version (1.0.0 → 2.0.0)
+- `pnpm run version:patch:preview` - Preview what the next patch version would be
+
+### Publish Scripts (Version Bump + Publish)
+
+- `pnpm run publish:patch` - Bumps patch version and publishes to npm
+- `pnpm run publish:minor` - Bumps minor version and publishes to npm
+- `pnpm run publish:major` - Bumps major version and publishes to npm
+
+**Usage examples:**
+
+```bash
+# For a patch release (bug fixes)
+pnpm run publish:patch
+
+# For a minor release (new features, backward compatible)
+pnpm run publish:minor
+
+# For a major release (breaking changes)
+pnpm run publish:major
+```
+
+**Note:** Make sure your git working directory is clean (commit or stash changes) before running these scripts, as they create git commits and tags automatically.
+
 ## Contributing
 
 Contributions are welcome! We appreciate any help, whether it's reporting bugs, suggesting features, or submitting Pull Requests.

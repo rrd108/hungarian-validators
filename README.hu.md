@@ -96,6 +96,38 @@ Ez a csomag kiterjeszthető további magyar validátorokkal:
 
 MIT
 
+## Új verziók közzététele
+
+A karbantartók számára az alábbi szkriptek használhatók új verziók közzétételéhez:
+
+### Verzió növelő szkriptek
+
+- `pnpm run version:patch` - Patch verzió növelése (1.0.0 → 1.0.1)
+- `pnpm run version:minor` - Minor verzió növelése (1.0.0 → 1.1.0)
+- `pnpm run version:major` - Major verzió növelése (1.0.0 → 2.0.0)
+- `pnpm run version:patch:preview` - Előnézet, hogy mi lenne a következő patch verzió
+
+### Közzétételi szkriptek (Verzió növelés + Közzététel)
+
+- `pnpm run publish:patch` - Patch verzió növelése és npm-re közzététel
+- `pnpm run publish:minor` - Minor verzió növelése és npm-re közzététel
+- `pnpm run publish:major` - Major verzió növelése és npm-re közzététel
+
+**Használati példák:**
+
+```bash
+# Patch kiadáshoz (hibajavítások)
+pnpm run publish:patch
+
+# Minor kiadáshoz (új funkciók, visszafelé kompatibilis)
+pnpm run publish:minor
+
+# Major kiadáshoz (változtatásokat tartalmazó)
+pnpm run publish:major
+```
+
+**Megjegyzés:** Mielőtt futtatnád ezeket a szkripteket, győződj meg arról, hogy a git munkakönyvtár tiszta (commitold vagy stash-elj el változtatásokat), mivel ezek automatikusan git commit-okat és címkéket hoznak létre.
+
 ## Közreműködés
 
 A közreműködés szívesen látott! Bármilyen segítséget értékelünk, legyen az hibajelentés, funkció javaslat vagy Pull Request beküldése.
