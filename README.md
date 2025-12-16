@@ -2,7 +2,7 @@
 
 [🇭🇺 Magyarul / Hungarian](README.hu.md)
 
-A TypeScript/JavaScript library for validating Hungarian identifiers: tax numbers (adóazonosító jel), TAJ numbers, bank accounts, and more.
+A TypeScript/JavaScript library for validating Hungarian identifiers: tax numbers (adóazonosító jel), TAJ numbers (Social Security Numbers), bank accounts, and more.
 
 ## Installation
 
@@ -30,6 +30,23 @@ const resultEn = validateTaxNumber('8123456789', { language: 'en' })
 
 // Validate tax number with birth date
 const resultWithDate = validateTaxNumberBirthDate('8123456789', '1980-01-01', { language: 'en' })
+```
+
+### Social Security Number (TAJ) Validation
+
+```typescript
+import { validateSSNumber } from 'hungarian-validators'
+
+// Basic validation
+const result = validateSSNumber('111111110')
+if (result.isValid) {
+  console.log('Valid TAJ number')
+} else {
+  console.error(result.error)
+}
+
+// Validation with English error messages
+const resultEn = validateSSNumber('111111110', { language: 'en' })
 ```
 
 ## API
@@ -68,10 +85,35 @@ Validates if the birth date encoding in tax number matches the actual birth date
 - `birthDate`: Birth date in YYYY-MM-DD format or Date object
 - `options`: Optional configuration (same as above)
 
+### `validateSSNumber(ssNumber: string, options?: SSNumberValidationOptions): ValidationResult`
+
+Validates a Hungarian Social Security Number (TAJ - Társadalombiztosítási Azonosító Jel).
+
+**Parameters:**
+
+- `ssNumber`: The TAJ number to validate (9 digits)
+- `options`: Optional configuration
+  - `language`: 'hu' | 'en' (default: 'hu')
+
+**Returns:**
+
+- `ValidationResult` object with:
+  - `isValid`: boolean
+  - `error?`: string (error message if invalid)
+
+**Validation Rules:**
+
+Based on 1996. évi XX. law:
+
+1. Exactly 9 digits
+2. Digits 1-8: Unique sequence number
+3. Digit 9: Control digit (CDV - Check Digit Verification)
+4. Checksum: Multiply odd positions (1st, 3rd, 5th, 7th) by 3, multiply even positions (2nd, 4th, 6th, 8th) by 7, sum all products, take modulo 10, compare with 9th digit
+
 ## Examples
 
 ```typescript
-import { validateTaxNumber, validateTaxNumberBirthDate } from 'hungarian-validators'
+import { validateTaxNumber, validateTaxNumberBirthDate, validateSSNumber } from 'hungarian-validators'
 
 // Example 1: Basic validation
 const result1 = validateTaxNumber('8123456789')
@@ -83,13 +125,17 @@ console.log(result2.error) // "Tax number must be exactly 10 digits"
 
 // Example 3: Validate with birth date
 const result3 = validateTaxNumberBirthDate('8123456789', '1980-01-01')
+
+// Example 4: TAJ number validation
+import { validateSSNumber } from 'hungarian-validators'
+const result4 = validateSSNumber('111111110')
+console.log(result4.isValid) // true
 ```
 
 ## Future Validators
 
 This package is designed to be extended with additional Hungarian validators:
 
-- **TAJ Number** (Társadalombiztosítási azonosító jel)
 - **Bank Account Number** (Bankszámlaszám)
 - **Company Tax Number** (Adószám)
 - And more...

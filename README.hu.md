@@ -32,6 +32,23 @@ const resultEn = validateTaxNumber('8123456789', { language: 'en' })
 const resultWithDate = validateTaxNumberBirthDate('8123456789', '1980-01-01', { language: 'en' })
 ```
 
+### TAJ szám (Társadalombiztosítási azonosító jel) validálás
+
+```typescript
+import { validateSSNumber } from 'hungarian-validators'
+
+// Alap validálás
+const result = validateSSNumber('111111110')
+if (result.isValid) {
+  console.log('Érvényes TAJ szám')
+} else {
+  console.error(result.error)
+}
+
+// Validálás angol hibaüzenetekkel
+const resultEn = validateSSNumber('111111110', { language: 'en' })
+```
+
 ## API
 
 ### `validateTaxNumber(taxNumber: string, options?: TaxNumberValidationOptions): ValidationResult`
@@ -68,10 +85,35 @@ Validálja, hogy az adóazonosítóban kódolt születési dátum megegyezik-e a
 - `birthDate`: Születési dátum YYYY-MM-DD formátumban vagy Date objektumként
 - `options`: Opcionális beállítások (ugyanaz, mint fent)
 
+### `validateSSNumber(ssNumber: string, options?: SSNumberValidationOptions): ValidationResult`
+
+Magyar TAJ szám (Társadalombiztosítási Azonosító Jel) validálása.
+
+**Paraméterek:**
+
+- `ssNumber`: A validálandó TAJ szám (9 számjegy)
+- `options`: Opcionális beállítások
+  - `language`: 'hu' | 'en' (alapértelmezett: 'hu')
+
+**Visszatérési érték:**
+
+- `ValidationResult` objektum a következő mezőkkel:
+  - `isValid`: boolean
+  - `error?`: string (hibaüzenet, ha érvénytelen)
+
+**Validálási szabályok:**
+
+Az 1996. évi XX. törvény alapján:
+
+1. Pontosan 9 számjegy
+2. 1-8. számjegy: Egyedi sorszám
+3. 9. számjegy: Ellenőrző számjegy (CDV - Check Digit Verification)
+4. Ellenőrzőösszeg: Páratlan pozíciók (1., 3., 5., 7.) szorzata 3-mal, páros pozíciók (2., 4., 6., 8.) szorzata 7-tel, összes szorzat összege, modulo 10, összehasonlítás a 9. számjeggyel
+
 ## Példák
 
 ```typescript
-import { validateTaxNumber, validateTaxNumberBirthDate } from 'hungarian-validators'
+import { validateTaxNumber, validateTaxNumberBirthDate, validateSSNumber } from 'hungarian-validators'
 
 // Példa 1: Alap validálás
 const result1 = validateTaxNumber('8123456789')
@@ -83,13 +125,17 @@ console.log(result2.error) // "Tax number must be exactly 10 digits"
 
 // Példa 3: Validálás születési dátummal
 const result3 = validateTaxNumberBirthDate('8123456789', '1980-01-01')
+
+// Példa 4: TAJ szám validálás
+import { validateSSNumber } from 'hungarian-validators'
+const result4 = validateSSNumber('111111110')
+console.log(result4.isValid) // true
 ```
 
 ## Jövőbeli validátorok
 
 Ez a csomag kiterjeszthető további magyar validátorokkal:
 
-- **TAJ szám** (Társadalombiztosítási azonosító jel)
 - **Bankszámlaszám** (Bankszámlaszám)
 - **Cég adószáma** (Adószám)
 - És még továbbak...
