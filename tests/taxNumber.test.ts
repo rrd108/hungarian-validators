@@ -27,6 +27,17 @@ describe('validateTaxNumber', () => {
     expect(result.isValid).toBe(false)
     expect(result.error).toContain('számjegyből')
   })
+
+  it('should remove non-numeric characters from tax number', () => {
+    // Test with spaces
+    expect(validateTaxNumber('8 315 022 261').isValid).toBe(true)
+    // Test with dashes
+    expect(validateTaxNumber('8-315-022-261').isValid).toBe(true)
+    // Test with mixed non-numeric characters
+    expect(validateTaxNumber('8-315 022.261').isValid).toBe(true)
+    // Test with only numbers (should still work)
+    expect(validateTaxNumber('8315022261').isValid).toBe(true)
+  })
 })
 
 describe('calculateDaysSince1867', () => {

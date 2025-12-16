@@ -48,8 +48,8 @@ export function validateTaxNumber(
   const lang = options.language || 'hu'
   const messages = errorMessages[lang]
 
-  // Remove any whitespace
-  const cleaned = taxNumber.trim()
+  // Remove any whitespace and non-numeric characters
+  const cleaned = taxNumber.replace(/\D/g, '')
 
   // Check if it's exactly 10 digits
   if (!/^\d{10}$/.test(cleaned)) {
@@ -176,7 +176,8 @@ export function validateTaxNumberBirthDate(
     return basicValidation
   }
 
-  const cleaned = taxNumber.trim()
+  // Remove any whitespace and non-numeric characters (same as validateTaxNumber)
+  const cleaned = taxNumber.replace(/\D/g, '')
   const daysFromTaxNumber = parseInt(cleaned.substring(1, 6), 10)
   const daysFromBirthDate = calculateDaysSince1867(birthDate)
 
