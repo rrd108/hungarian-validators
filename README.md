@@ -10,6 +10,8 @@ A TypeScript/JavaScript library for validating Hungarian identifiers: tax number
 npm install hungarian-validators
 ```
 
+**Zero Dependencies** - This library has no runtime dependencies, making it lightweight and fast to install.
+
 ## Usage
 
 ### Tax Number (Adóazonosító jel) Validation

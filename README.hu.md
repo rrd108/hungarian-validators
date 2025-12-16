@@ -10,6 +10,8 @@ TypeScript/JavaScript könyvtár magyar azonosítók validálásához: adóazono
 npm install hungarian-validators
 ```
 
+**Nincs függőség** - Ez a könyvtár nem tartalmaz futásidejű függőségeket, így könnyű és gyors telepítésű.
+
 ## Használat
 
 ### Adóazonosító jel validálás
