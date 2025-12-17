@@ -1,6 +1,6 @@
 {
   "name": "hungarian-validators",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "A TypeScript/JavaScript library for validating Hungarian identifiers: tax numbers (adóazonosító jel), social security number (TAJ szám)",
   "type": "module",
   "author": "Radharadhya Dasa",
