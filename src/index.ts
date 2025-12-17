@@ -6,20 +6,20 @@
  */
 
 // Shared types
-export type { ValidationResult, ValidationOptions } from './types'
+export type { ValidationResult, ValidationOptions } from './types.js'
 
 // Tax Number (Adóazonosító jel) validators
 export {
   validateTaxNumber,
   validateTaxNumberBirthDate,
   type TaxNumberValidationOptions
-} from './taxNumber'
+} from './taxNumber.js'
 
 // Social Security Number (TAJ) validators
 export {
   validateSSNumber,
   type SSNumberValidationOptions
-} from './ssNumber'
+} from './ssNumber.js'
 
 // Future validators will be exported here:
 // export { validateBankAccount } from './bankAccount'

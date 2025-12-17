@@ -1,4 +1,4 @@
-import { ValidationResult, ValidationOptions, cleanNumericInput } from './types'
+import { ValidationResult, ValidationOptions, cleanNumericInput } from './types.js'
 
 /**
  * Validates Hungarian tax number (adóazonosító jel)
